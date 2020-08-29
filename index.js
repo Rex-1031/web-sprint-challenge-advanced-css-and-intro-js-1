@@ -213,7 +213,8 @@ console.log("TASK 1:", artists[2].bio);
 
 /* Task 2: There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
 console.log ("TASK 2-before:",artists[8]);
-artists[8]
+artists[8].name = "Vincent van Gogh";
+console.log ("TASK 2-after:",artists[8]);
 
 
 /* Task 3: Create a function called `getArtistByIndex` that takes two arguments:
@@ -228,18 +229,24 @@ function getArtistByIndex(array, index) {
     return  `The artist at index ${index} is ${array[index].name}.`
   }
   
-
+  console.log("Task 3:", getArtistByIndex(artists, 0));
   /**
 
 
 /* Task 4: Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born in and died in 20th century (1900-2000) example born in 1901 and died in 1959 - included / born in 1889 and died in 1925 not included - should return ["Salvador Dali", "Frida Kahlo"]*/
 
-function get20s(/* Code here */){
+function get20s(arr){
+  let artistsOf20s = [];
 
-  /* Code here */
+  for(let i = 0; i< arr.length; i++){
 
+    if(arr[i].years >= "1900"){
+      artistsOf20s.push( arr[i].name);
+    }
+  }
+    return artistsOf20s;
 }
-
+console.log("Task 4:", get20s(artists));
 
 /* Task 5: Create a function called `removeArtist` that takes two arguments:
  *     (1) artists array
@@ -251,9 +258,12 @@ function get20s(/* Code here */){
  * 
  * Note that sucessfully invoking this function multiple times without refreshing your browser will continuously remove artists from the array until there are none left. If you refresh your browser, the data will reset.  
 */
-function removeArtist(/*code here*/) {
-    /* code here */
+function removeArtist(arr, index) {
+    arr.splice(index, 1);
+    return arr.length;
   }
+  console.log("Task 5 -before:",artists.length);
+  console.log("Task 5 -after:", removeArtist(artists, 0));
   
  
 
@@ -269,12 +279,24 @@ nationality: Your Nationality Here
 bio: Add 1-2 sentences (or use lorem ipsum) 
 
 At the end, this function should return the new array with information added"*/
+newArtist = {
 
-function addArtist(/* Code here */){
+  id: 20,
+  name: "Steve Clair", 
+  years: "1983 - Present",
+  genre: "Web Design", 
+  nationality: "American",
+  bio: "Steven T. Clair is a burgeoning Web Developer currently studying at Lamnbda School. He currently works as a RF Test Technician for a small communications company."
+};
 
-    /* Code here */
+
+function addArtist(arr, obj){
+
+    arr.push(obj);
+    return arr
 
   }
+  console.log("Task 6:",addArtist(artists, newArtist))
 
 /* Task 7: Create a function called lotsOfArt() that takes one argument: 
 
@@ -284,13 +306,18 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
-function lotsOfArt(/* Code here */){
-
-  /* Code here */
+function lotsOfArt(arr){
+let lotsOfPaintings = [];
+for (let i =0; i < arr.length; i++){
+  if (arr[i].paintings > 100 ){
+      lotsOfPaintings.push(arr[i].name)
+  }
+}
+  return lotsOfPaintings;
 
 }
 
-
+console.log("Task 7:", lotsOfArt(artists));
 
 // 🎨🎨 STRETCH 🎨🎨//
 
